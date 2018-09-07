@@ -1,0 +1,56 @@
+:local(.container) {
+  width: 326px;
+  border: 1.5px solid grey;
+}
+
+:local(.list) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+:local(.header) {
+  font-family: Arial;
+  font-weight: 300;
+  margin: 10px 0px 5px 30%;
+}
+
+:local(.entry) {
+  display: flex;
+  width: 150px;
+  height: 120px;
+  flex-direction: column;
+  border: 1px solid grey;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease-in-out;
+}
+
+:local(.entry:hover) {
+  background-color: #FFFAB6;
+  transform: scale(1.2);
+}
+
+:local(.entrytitle) {
+  width: 100px;
+  font-family: Arial;
+  font-size: 12px;
+  white-space: pre;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+  text-align: center;
+}
+
+:local(.entryyear) {
+  font-family: Arial;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
+:local(.entryimage) {
+  height: 80px;
+  width: 60px;
+}

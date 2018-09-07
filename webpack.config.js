@@ -1,48 +1,29 @@
-
-// at top of file
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var path = require('path');
-var webpack = require('webpack');
-var combineLoaders = require('webpack-combine-loaders');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
 
 module.exports = {
-  devtool: 'eval',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './src/index'
-  ],
+  entry: path.resolve(__dirname, "./client"),
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    path: path.resolve(__dirname, "./static"),
+    filename: "bundle.js"
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: 'index.template.ejs',
-      inject: 'body',
-    })
-  ],
+  mode: "development",
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      include: path.join(__dirname, 'src')
-    }, {
-      test: /\.css$/,
-      loader: combineLoaders([
-        {
-          loader: 'style-loader'
-        }, {
-          loader: 'css-loader',
-          query: {
-            modules: true,
-            localIdentName: '[name]__[local]___[hash:base64:5]'
-          }
+    rules: [
+      {
+        loader: "babel-loader",
+        test: /\.js[x]?/,
+        exclude: /(node_modules|dep)/,
+        options: {
+          presets: ["react", "env"]
         }
-      ])
-    }]
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      }
+    ]
+  },
+  resolve: {
+    extensions: [".js", ".jsx"]
   }
 };

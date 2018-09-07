@@ -1,6 +1,6 @@
-const mongoose = require(mongoose);
+const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:21017/nav', { useNewUrlParser:  true });
+mongoose.connect('mongodb://localhost:27017/nav', { useNewUrlParser:  true });
 
 const db = mongoose.connection;
 
